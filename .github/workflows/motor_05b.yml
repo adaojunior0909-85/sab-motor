@@ -1,13 +1,15 @@
-# SAB: motor V1.5 automático (versão 2026.11.01)
-# Roda o 05b (gravação) todo dia às 15h07 e às 23h07 de Brasília (18h07 e 02h07 UTC; o GitHub pode atrasar o
-# horário agendado em alguns minutos). À mão (aba Actions > Motor SAB > Run workflow) dá para rodar o 05a
+# SAB: motor automático, UMA vez por dia (versão 2026.11.08)
+# Roda o 05b (gravação) todo dia às 23h07 de Brasília (02h07 UTC do dia seguinte; o GitHub costuma começar uns 40 min
+# depois do agendado, ~23h47, e a rodada leva ~20 min). [2026.11.08] Uma rodada só, à noite: ela pega o dia novo do
+# ERA5-Land (que chega durante o dia) e a rodada 00Z do GFS do mesmo dia (completa no Earth Engine por volta das 05h30
+# de Brasília; K21 parte G). Serve para a V1.5 (rodar_motor.py 2026.11.01) e para a V1.6 (rodar_motor.py 2026.11.08):
+# quem escolhe a versão do motor é o rodar_motor.py. À mão (aba Actions > Motor SAB > Run workflow) dá para rodar o 05a
 # (simulação, o padrão) ou o 05b. Uma execução por vez (concurrency): nunca dois motores juntos.
 name: Motor SAB
 
 on:
   schedule:
-    - cron: '7 18 * * *'
-    - cron: '7 2 * * *'
+    - cron: '7 2 * * *'     # 02h07 UTC = 23h07 de Brasília
   workflow_dispatch:
     inputs:
       modo:
@@ -58,8 +60,10 @@ jobs:
         if: always() && github.event_name == 'workflow_dispatch' && inputs.modo == 'simular'
         uses: actions/upload-artifact@v4
         with:
-          name: previa_v15
-          path: previa_v15.csv
+          name: previa
+          path: |
+            previa_v15.csv
+            previa_v16.csv
           if-no-files-found: ignore
 
       - name: Apagar a credencial da máquina
