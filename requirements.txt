@@ -1,2 +1,2 @@
-earthengine-api
-pandas
+earthengine-api==1.7.52
+pandas==3.1.1
