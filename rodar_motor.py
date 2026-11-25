@@ -1,4 +1,4 @@
-# >>> SAB: execução automática do motor V1.6 no GitHub Actions (1x por dia, 23h07 de Brasília). Versão 2026.11.08 <<<
+# >>> SAB: execução automática do motor V1.6 no GitHub Actions (1x por dia, 23h07 de Brasília). Versão 2026.11.24 <<<
 # =========================================================================================
 # O QUE FAZ, NESTA ORDEM
 #   1. Confere a impressão digital (SHA-256) do arquivo do motor contra SHA256_MOTOR.txt: só roda o arquivo
@@ -7,6 +7,9 @@
 #      basta subir o rodar_motor.py 2026.11.01 do pacote anterior (o SHA256_MOTOR.txt lista as duas versões).
 #      [2026.11.08] V1.6 revista depois da K21 v3a (vento dos dias ERA5 pela média; SHA novo no SHA256_MOTOR.txt).
 #      O horário (23h07, uma vez por dia) fica só no workflow motor_05b.yml; este lançador não depende do horário.
+#      [2026.11.24] ETAPA A DA V1.7: a gravação da noite continua na V1.6 (05b v1_6); a SIMULAÇÃO (Actions > Motor SAB >
+#      Run workflow > simular) passa a rodar o 05a da V1.7 (radiação 0 do ERA5-Land vira vazio; K26 de 22/11). Etapa B,
+#      só depois da prévia aprovada: 'gravar' -> 05b_motor_sab_v1_7_GRAVACAO.py (o SHA256_MOTOR.txt já lista os dois).
 #   2. Confere no texto do arquivo as travas: PROTEGER_HISTORICO = True e DATA_LIMITE_PROTECAO = '2025-12-31'
 #      (e SIMULAR = False no 05b, SIMULAR = True no 05a). Sem elas, para sem rodar nada.
 #   3. Liga o Earth Engine com a credencial do segredo EE_CREDENCIAL. Se falhar, para (nunca pede login).
@@ -25,9 +28,9 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
-VERSAO = '2026.11.08'
+VERSAO = '2026.11.24'
 PROJETO = 'clima-492922'
-ARQUIVOS = {'gravar': '05b_motor_sab_v1_6_GRAVACAO.py', 'simular': '05a_motor_sab_v1_6_SIMULACAO.py'}
+ARQUIVOS = {'gravar': '05b_motor_sab_v1_6_GRAVACAO.py', 'simular': '05a_motor_sab_v1_7_SIMULACAO.py'}   # [2026.11.24] etapa A da V1.7
 ESPERA_PEDIDOS_MIN = 45
 INTERVALO_S = 60
 ATIVOS = ('READY', 'RUNNING', 'PENDING', 'SUBMITTED')
