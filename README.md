@@ -8,8 +8,8 @@ cada execução). V1.6 revista em 08/11/2026 depois da K21: UR pelo EQM, vento d
 
 | Arquivo | O que é |
 |---|---|
-| `05b_motor_sab_v1_7_GRAVACAO.py` | Motor V1.7 gravando (desde 25/11/2026)
-| `05a_motor_sab_v1_8_SIMULACAO.py`, `05b_motor_sab_v1_8_GRAVACAO.py` | Motor V1.8 (chuva dos dias ERA5 corrigida pelo C3): só em simulação até a prévia e a K16 serem aprovadas |
+| `05b_motor_sab_v1_8_GRAVACAO.py`, `05a_motor_sab_v1_8_SIMULACAO.py` | **Motor V1.8 gravando** (chuva dos dias ERA5 de 2026 corrigida pelo C3; aprovado em 25/11/2026) |
+| `05b_motor_sab_v1_7_GRAVACAO.py` | Motor V1.7 (25/11/2026), para voltar atrás |
 | `05b_motor_sab_v1_6_GRAVACAO.py` | Motor V1.6 gravando (dias de 2026 do `SAB_V1`; histórico até 2025-12-31 travado) |
 | `05a_motor_sab_v1_6_SIMULACAO.py` | O mesmo motor em simulação (não grava nada) |
 | `05b_motor_sab_v1_5_GRAVACAO.py`, `05a_motor_sab_v1_5_SIMULACAO.py` | Versão anterior, só para voltar atrás |
