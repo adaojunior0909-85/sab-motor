@@ -64,6 +64,7 @@ jobs:
           path: |
             previa_v15.csv
             previa_v16.csv
+            previa_v17.csv
           if-no-files-found: ignore
 
       - name: Apagar a credencial da máquina
